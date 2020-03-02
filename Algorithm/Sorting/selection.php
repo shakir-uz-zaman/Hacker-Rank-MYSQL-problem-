@@ -6,6 +6,41 @@ $numbers = explode(",",$data);
 
 //bubble_sort($numbers);
 selection_sort($numbers);
+//////////////SELECTION
+function selection_sort($numbers)
+{
+  //  $selection_numbers = $numbers;
+    $length = count($numbers);
+    print_this_array($numbers);
+     $swapped =0;
+    for($i=0;$i<$length-1; $i++)
+    {
+     $min_index=$i;
+
+     for($j=$i+1; $j<$length;$j++)
+         {
+             if($numbers[$j] < $numbers[$min_index])
+             {
+                 $tmp = $numbers[$j];
+                 $numbers[$min_index] = $numbers[$j];
+                 $numbers[$j]=$tmp;
+                 $swapped++;
+                 $min_index=$j;
+             }
+
+
+         }
+        print_this_array($numbers);
+    }
+
+
+
+}
+
+
+
+
+
 /////////////--------  BUBBLE SORT STARTS bubblestarts ---------/////////////////////////
 function bubble_sort($numbers)
 {
@@ -29,14 +64,7 @@ function bubble_sort($numbers)
     }
 
 }
-function selection_sort($numbers)
-{
-    $selection_numbers = $numbers;
-    $length = count($selection_numbers);
-    print_this_array($selection_numbers);
 
-
-}
 
 function print_this_array($arr)
 {
@@ -46,6 +74,10 @@ function print_this_array($arr)
         echo $ass." ";
     }
 }
+
+
+
+
 
 
 ////////////////--------  BUBBLE SORT FINISH buublefinish  ---------/////////////////////////
