@@ -1,44 +1,40 @@
 <?php
 $data_file_name = 'random_data.txt';
+if (file_exists($data_file_name)) {
+
+   // unlink($data_file_name);
+
+}
+//$fp = fopen($data_file_name, 'r');
+//$fp = fopen($data_file_name, 'w');
+//$max_loop_limit =5;
+//for($i =0;$i<$max_loop_limit;$i++)
+//{
+//    $random_number = rand(0,50);
+//
+//    if($i<$max_loop_limit-1)
+//    {
+//        fwrite($fp, $random_number."," );
+//    }
+//    else
+//    {
+//        fwrite($fp, $random_number );
+//    }
+//}
+//fclose($fp);
+
 $data = file_get_contents($data_file_name);
 $numbers = explode(",",$data);
 //print_r($numbers);
 
-//bubble_sort($numbers);
-selection_sort($numbers);
-//////////////SELECTION
-function selection_sort($numbers)
-{
-  //  $selection_numbers = $numbers;
-    $length = count($numbers);
-    print_this_array($numbers);
-     $swapped =0;
-    for($i=0;$i<$length-1; $i++)
-    {
-     $min_index=$i;
+bubble_sort($numbers);
 
-     for($j=$i+1; $j<$length;$j++)
-         {
-             if($numbers[$j] < $numbers[$min_index])
-             {
-                 $tmp = $numbers[$min_index];
-                 $numbers[$min_index] = $numbers[$j];
-                 $numbers[$j]=$tmp;
-                 $swapped++;
-                 $min_index=$j;
-             }
-
-
-         }
-        print_this_array($numbers);
-    }
-
-}
 /////////////--------  BUBBLE SORT STARTS bubblestarts ---------/////////////////////////
 function bubble_sort($numbers)
 {
     $bubble_numbers = $numbers;
     $length =count($bubble_numbers);
+    $swapped =0;
     print_this_array($bubble_numbers);
     for ($i=0;$i<$length-1;$i++)
     {
@@ -46,6 +42,7 @@ function bubble_sort($numbers)
             {
                 if($bubble_numbers[$j] >  $bubble_numbers[$j+1] )
                 {
+                    $swapped++;
                     $temp =  $bubble_numbers[$j+1] ;
                     $bubble_numbers[$j+1] = $bubble_numbers[$j] ;
                     $bubble_numbers[$j] =$temp;
@@ -55,9 +52,15 @@ function bubble_sort($numbers)
             }
 
     }
+    echo $swapped;
 
+
+
+//    foreac h($numbers as $number)
+//    {
+//        echo $number."  ";
+//    }
 }
-
 
 function print_this_array($arr)
 {
@@ -67,10 +70,6 @@ function print_this_array($arr)
         echo $ass." ";
     }
 }
-
-
-
-
 
 
 ////////////////--------  BUBBLE SORT FINISH buublefinish  ---------/////////////////////////
